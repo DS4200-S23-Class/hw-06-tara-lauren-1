@@ -8,7 +8,7 @@ body {
 
 .column {
 	flex: 33.33%;
-	height: 200px;
+	height: 600px;
 	padding: 10px;
 	margin: 5px;
 	text-align: center;
@@ -20,5 +20,5 @@ body {
 }
 
 .bar {
-  fill: red;
+	fill: green;
 }
