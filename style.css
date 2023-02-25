@@ -22,3 +22,11 @@ body {
 .bar {
 	fill: green;
 }
+.circle {
+  fill: royalblue;
+}
+
+
+.point {
+  fill: black;
+}
