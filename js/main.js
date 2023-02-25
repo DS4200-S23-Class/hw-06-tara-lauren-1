@@ -21,11 +21,12 @@ function build_interactive_bar() {
 
         const X_SCALE3 = d3.scaleBand()
                            .range([0, VIS_WIDTH])
-                           .domain(["setosa", "versicolor", "virginica"]);
+                           .domain(data.map((d) => {return d.Species;}))
+                           .padding(.4);
 
         const Y_SCALE3 = d3.scaleBand()
-                           .range([0, VIS_HEIGHT])
-                           .domain([100,0]);
+                           .range([VIS_HEIGHT,0])
+                           .domain([0,100]);
 
 
         // Adding X Axis 
@@ -53,8 +54,8 @@ function build_interactive_bar() {
                 .append("rect")
                     .attr("x", function(d) { return X_SCALE3(d.Species) + MARGINS.left;})
                     .attr("width", X_SCALE3.bandwidth())
-                    .attr("y", 50 + MARGINS.bottom);
-                    .attr("height", VIS_HEIGHT - 50);
+                    .attr("y", MARGINS.bottom)
+                    .attr("height", VIS_HEIGHT - 50)
                     .attr("class", "bar");})}
 
 
