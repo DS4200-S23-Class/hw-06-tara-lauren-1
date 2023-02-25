@@ -4,8 +4,10 @@ const MARGINS = {left: 50, right: 50, top: 50, bottom: 50};
 const VIS_HEIGHT = FRAME_HEIGHT - MARGINS.top - MARGINS.bottom;
 const VIS_WIDTH = FRAME_WIDTH - MARGINS.left - MARGINS.right; 
 
-// second scatter plot
 
+
+
+// middle scatter plot
 
 const FRAME2 = d3.select("#vis2")
                   .append("svg")
@@ -21,12 +23,12 @@ function build_scatter_2() {
 
 // Open file
 
-      const MAX_X2 = d3.max(data, (d) => { return parseInt(d.Petal_Width); });
-      const MAX_Y2 = d3.max(data, (d) => { return parseInt(d.Sepal_Width); });
+      const MAX_X2 = d3.max(data, (d) => { return parseInt(d.Sepal_Width); });
+      const MAX_Y2 = d3.max(data, (d) => { return parseInt(d.Petal_Width); });
 
       const X_SCALE2 = d3.scaleLinear() 
                         .domain([0, (MAX_X2 + 1)]) 
-                        .range([0, VIS_WIDTH]); 
+                        .range([0, VIS_WIDTH]);
 
       const Y_SCALE2 = d3.scaleLinear() 
                         .domain([0, (MAX_Y2 + 1)]) 
@@ -40,14 +42,26 @@ function build_scatter_2() {
             .attr("font-size", '20px');
 
     // add y axis 
-            
+
       FRAME2.append("g")
             .attr("transform", 
                 "translate(" + MARGINS.left + "," + (MARGINS.bottom) + ")")
             .call(d3.axisLeft(Y_SCALE2).ticks(10))
-                .attr("font-size", "10px");})}
+                .attr("font-size", "10px");
+
+  // add points
+       FRAME2.selectAll("points")  
+          .data(data) 
+          .enter()       
+          .append("circle")  
+            .attr("cx", (d) => { return (X_SCALE2(d.Sepal_Width) + MARGINS.left); }) 
+            .attr("cy", (d) => { return (Y_SCALE2(d.Petal_Width) + MARGINS.top); }) 
+            .attr("r", 4)
+            .attr("class", "point");})}
 
 build_scatter_2()
+
+
 
 // bar graph 
 
