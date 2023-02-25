@@ -10,6 +10,7 @@ const VIS_WIDTH = FRAME_WIDTH - MARGINS.left - MARGINS.right;
 
 function build_interactive_bar() {
     d3.csv("data/iris.csv").then((data3) => {
+        
         const FRAME3 = d3.select("#barchart")
                           .append("svg")
                           .attr("height", FRAME_HEIGHT)
