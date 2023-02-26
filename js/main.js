@@ -5,53 +5,53 @@ const VIS_HEIGHT = FRAME_HEIGHT - MARGINS.top - MARGINS.bottom;
 const VIS_WIDTH = FRAME_WIDTH - MARGINS.left - MARGINS.right; 
 
 
-// // Left scatter plot
-// const FRAME1 = d3.select("#vis1")
-//                   .append("svg")
-//                     .attr("height", FRAME_HEIGHT)
-//                     .attr("width", FRAME_WIDTH)
-//                     .attr("class", "frame"); 
+// Left scatter plot
+const FRAME1 = d3.select("#vis1")
+                  .append("svg")
+                    .attr("height", FRAME_HEIGHT)
+                    .attr("width", FRAME_WIDTH)
+                    .attr("class", "frame"); 
  
-// function build_scatter_1() {
-// 	// Open file
-//   d3.csv("data/iris.csv").then((data) => { 
+function build_scatter_1() {
+	// Open file
+  d3.csv("data/iris.csv").then((data) => { 
 
 
-//       const MAX_X2 = d3.max(data, (d) => { return parseInt(d.Sepal_Length); });
-//       const MAX_Y2 = d3.max(data, (d) => { return parseInt(d.Petal_Length); });
+      const MAX_X2 = d3.max(data, (d) => { return parseInt(d.Sepal_Length); });
+      const MAX_Y2 = d3.max(data, (d) => { return parseInt(d.Petal_Length); });
 
-//       const X_SCALE2 = d3.scaleLinear() 
-//                         .domain([0, (MAX_X2 + 1)]) 
-//                         .range([0, VIS_WIDTH]);
+      const X_SCALE2 = d3.scaleLinear() 
+                        .domain([0, (MAX_X2 + 1)]) 
+                        .range([0, VIS_WIDTH]);
 
-//       const Y_SCALE2 = d3.scaleLinear() 
-//                         .domain([0, (MAX_Y2 + 1)]) 
-//                         .range([VIS_HEIGHT, 0]);
-//      	// Add x axis
-//       FRAME2.append("g") 
-//             .attr("transform", "translate(" + MARGINS.left + 
-//                 "," + (VIS_HEIGHT + MARGINS.top) + ")") 
-//             .call(d3.axisBottom(X_SCALE2).ticks(10)) 
-//             .attr("font-size", '20px');
+      const Y_SCALE2 = d3.scaleLinear() 
+                        .domain([0, (MAX_Y2 + 1)]) 
+                        .range([VIS_HEIGHT, 0]);
+     	// Add x axis
+      FRAME1.append("g") 
+            .attr("transform", "translate(" + MARGINS.left + 
+                "," + (VIS_HEIGHT + MARGINS.top) + ")") 
+            .call(d3.axisBottom(X_SCALE2).ticks(10)) 
+            .attr("font-size", '20px');
 
-//     	// Add y axis 
-//       FRAME2.append("g")
-//             .attr("transform", 
-//                 "translate(" + MARGINS.left + "," + (MARGINS.bottom) + ")")
-//             .call(d3.axisLeft(Y_SCALE2).ticks(10))
-//                 .attr("font-size", "10px");
+    	// Add y axis 
+      FRAME1.append("g")
+            .attr("transform", 
+                "translate(" + MARGINS.left + "," + (MARGINS.bottom) + ")")
+            .call(d3.axisLeft(Y_SCALE2).ticks(10))
+                .attr("font-size", "10px");
 
-//   		 // Add points
-//        FRAME2.selectAll("points")  
-//           .data(data) 
-//           .enter()       
-//           .append("circle")  
-//             .attr("cx", (d) => { return (X_SCALE2(d.Sepal_Length) + MARGINS.left); }) 
-//             .attr("cy", (d) => { return (Y_SCALE2(d.Petal_Length) + MARGINS.top); }) 
-//             .attr("r", 4)
-//             .attr("class", "point");})}
+  		 // Add points
+       FRAME1.selectAll("points")  
+          .data(data) 
+          .enter()       
+          .append("circle")  
+            .attr("cx", (d) => { return (X_SCALE2(d.Sepal_Length) + MARGINS.left); }) 
+            .attr("cy", (d) => { return (Y_SCALE2(d.Petal_Length) + MARGINS.top); }) 
+            .attr("r", 4)
+            .attr("class", "point");})}
 
-// build_scatter_1()
+build_scatter_1()
 
 
 
