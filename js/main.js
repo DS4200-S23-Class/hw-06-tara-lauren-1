@@ -77,7 +77,7 @@ d3.csv("data/iris.csv").then((data) => {
     const MAX_Y2 = d3.max(data, (d) => { return parseInt(d.Petal_Width); });
 
     const X_SCALE2 = d3.scaleLinear() 
-                        .domain([0, (MAX_X2 + 1)]) 
+                        .domain([0, 8]) 
                         .range([0, VIS_WIDTH]);
 
     const Y_SCALE2 = d3.scaleLinear() 
