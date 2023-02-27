@@ -54,7 +54,7 @@ function build_scatter_1() {
             .attr("cx", (d) => { return (X_SCALE1(d.Sepal_Length) + MARGINS.left); }) 
             .attr("cy", (d) => { return (Y_SCALE1(d.Petal_Length) + MARGINS.top); }) 
             .attr("r", 4)
-            .style("fill", function (d) { return color(d.Species) } )
+            .attr("fill", function(d) { return color(d.Species); })
             .attr("opacity", 0.5)
             .attr("class", "point");})}
 
@@ -110,7 +110,7 @@ d3.csv("data/iris.csv").then((data) => {
             .attr("cx", (d) => { return (X_SCALE2(d.Sepal_Width) + MARGINS.left); }) 
             .attr("cy", (d) => { return (Y_SCALE2(d.Petal_Width) + MARGINS.top); }) 
             .attr("r", 4)
-            .style("fill", function (d) { return color(d.Species) } )
+            .attr("fill", function(d) { return color(d.Species); })
             .attr("opacity", 0.5)
             .attr("class", "point");})}
 
