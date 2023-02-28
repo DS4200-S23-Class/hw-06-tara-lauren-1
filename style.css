@@ -26,8 +26,8 @@ body {
 
 
 .selected {
-  opacity: 1 !important;
-  stroke: black;
+  opacity: 1;
+  stroke: orange;
   stroke-width: 1px;
 }
 
