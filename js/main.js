@@ -136,7 +136,8 @@ d3.csv("data/iris.csv").then((data) => {
 
     const Y_SCALE3 = d3.scaleBand()
                            .range([VIS_HEIGHT, 0])
-                           .domain([0,100])
+                           .domain([50,100])
+                           .padding(.3);
 
 
     const color = d3.scaleOrdinal()
@@ -152,11 +153,11 @@ d3.csv("data/iris.csv").then((data) => {
             .attr("font-size", '20px'); 
 
     // Adding Y Axis
-    FRAME3.append("g") 
-            .attr("transform", "translate(" + MARGINS.left +
-              "," + (MARGINS.bottom) + ")") 
-            .call(d3.axisLeft(Y_SCALE3).ticks(4)) 
-            .attr("font-size", '20px');
+    FRAME3.append("g")
+            .attr("transform", 
+                "translate(" + MARGINS.left + "," + (MARGINS.bottom) + ")")
+            .call(d3.axisLeft(Y_SCALE3).ticks(10))
+            .attr("font-size", "20px");
 
 
     // Adding bars
@@ -170,10 +171,7 @@ d3.csv("data/iris.csv").then((data) => {
                 .attr("height", 50)
                 .attr("class", "bar")
                 .attr("fill", function(d) { return color(d.Species);})
-                .attr("opacity", 0.5)})};
-
-    
-
+})};
 
 
 
