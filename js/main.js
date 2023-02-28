@@ -134,10 +134,9 @@ d3.csv("data/iris.csv").then((data) => {
                            .domain(data.map((d) => {return d.Species;}))
                            .padding(.3);
 
-    const Y_SCALE3 = d3.scaleBand()
+    const Y_SCALE3 = d3.scaleLinear()
                            .range([VIS_HEIGHT, 0])
-                           .domain([50,100])
-                           .padding(.3);
+                           .domain([0,100])
 
 
     const color = d3.scaleOrdinal()
@@ -156,7 +155,7 @@ d3.csv("data/iris.csv").then((data) => {
     FRAME3.append("g")
             .attr("transform", 
                 "translate(" + MARGINS.left + "," + (MARGINS.bottom) + ")")
-            .call(d3.axisLeft(Y_SCALE3).ticks(10))
+            .call(d3.axisLeft(Y_SCALE3).ticks(2))
             .attr("font-size", "20px");
 
 
@@ -165,12 +164,12 @@ d3.csv("data/iris.csv").then((data) => {
             .data(data)
             .enter()
             .append("rect")
-                .attr("x", function(d) { return X_SCALE3(d.Species) + MARGINS.left;})
+                .attr("x", (d) => { return (X_SCALE3(d.Species) + MARGINS.left); }) 
                 .attr("width", X_SCALE3.bandwidth())
-                .attr("y", VIS_HEIGHT)
-                .attr("height", 50)
+                .attr("y", (d) => {return Y_SCALE3(50) + MARGINS.top})
+                .attr("height", (d) => { return VIS_HEIGHT - Y_SCALE3(50)})
                 .attr("class", "bar")
-                .attr("fill", function(d) { return color(d.Species);})
+                .attr("fill", (d) => { return color(d.Species);})
 })};
 
 
