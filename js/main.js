@@ -123,9 +123,10 @@ d3.csv("data/iris.csv").then((data) => {
     // Function that is triggered when brushing is performed
     function updateChart(event) {
         const extent = event.selection;
-        pts1.classed("selected", function(d){return isBrushed(extent, (X_SCALE2(d.Sepal_Width) + MARGINS.left), (Y_SCALE2(d.Petal_Width) + MARGINS.top))})};
+        pts1.classed("selected", function(d){return isBrushed(extent, (X_SCALE2(d.Sepal_Width) + MARGINS.left), (Y_SCALE2(d.Petal_Width) + MARGINS.top))})
         pts2.classed("selected", function(d){return isBrushed(extent, (X_SCALE2(d.Sepal_Width) + MARGINS.left), (Y_SCALE2(d.Petal_Width) + MARGINS.top))})                                                        
-        bars1.classed("selected", function(d){return isBrushed(extent, (X_SCALE2(d.Sepal_Width) + MARGINS.left), (Y_SCALE2(d.Petal_Width) + MARGINS.top))})
+        bars1.classed("selected", function(d){return isBrushed(extent, (X_SCALE2(d.Sepal_Width) + MARGINS.left), (Y_SCALE2(d.Petal_Width) + MARGINS.top))})}
+
   // A function that return TRUE or FALSE according if a dot is in the selection or not
   function isBrushed(brush_coords, cx, cy) {
        var x0 = brush_coords[0][0],
@@ -135,10 +136,6 @@ d3.csv("data/iris.csv").then((data) => {
       return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1};    // This return TRUE or FALSE depending on if the points is in the selected area
   
 })}
-
-
-
-
 
 build_scatter_2()
 
