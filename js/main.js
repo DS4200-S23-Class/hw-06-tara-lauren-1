@@ -28,6 +28,10 @@ function build_scatter_1() {
     const Y_SCALE1 = d3.scaleLinear() 
                         .domain([0, (MAX_Y1 + 1)]) 
                         .range([VIS_HEIGHT, 0]);
+
+    const color = d3.scaleOrdinal()
+                    .domain(["setosa", "versicolor", "virginica" ])
+                    .range([ "royalblue", "violet", "green"])
     // Add x axis
     FRAME1.append("g") 
             .attr("transform", "translate(" + MARGINS.left + 
@@ -41,10 +45,6 @@ function build_scatter_1() {
                 "translate(" + MARGINS.left + "," + (MARGINS.bottom) + ")")
             .call(d3.axisLeft(Y_SCALE1).ticks(10))
             .attr("font-size", "10px");
-
-    const color = d3.scaleOrdinal()
-    .domain(["setosa", "versicolor", "virginica" ])
-    .range([ "royalblue", "violet", "green"])
 
   	// Add points
     FRAME1.selectAll("points")  
@@ -84,6 +84,10 @@ d3.csv("data/iris.csv").then((data) => {
                         .domain([0, (MAX_Y2 + 1)]) 
                         .range([VIS_HEIGHT, 0]);
 
+    const color = d3.scaleOrdinal()
+                    .domain(["setosa", "versicolor", "virginica" ])
+                    .range([ "royalblue", "violet", "green"])
+
     // Add x axis
     FRAME2.append("g") 
             .attr("transform", "translate(" + MARGINS.left + 
@@ -98,10 +102,6 @@ d3.csv("data/iris.csv").then((data) => {
             .call(d3.axisLeft(Y_SCALE2).ticks(10))
             .attr("font-size", "10px");
 
-    const color = d3.scaleOrdinal()
-    .domain(["setosa", "versicolor", "virginica" ])
-    .range([ "royalblue", "violet", "green"])
-
   	// Add points
     FRAME2.selectAll("points")  
           .data(data) 
@@ -112,9 +112,34 @@ d3.csv("data/iris.csv").then((data) => {
             .attr("r", 4)
             .attr("fill", function(d) { return color(d.Species); })
             .attr("opacity", 0.5)
-            .attr("class", "point");})}
+            .attr("class", "point");
+
+    // Add brushing
+    FRAME2.call( d3.brush()                 // Add the brush feature using the d3.brush function
+            .extent( [ [0,0], [FRAME_WIDTH, FRAME_HEIGHT] ] ) // initialise the brush area: start at 0,0 and finishes at width,height: it means I select the whole graph area
+            .on("start brush", updateChart) // Each time the brush selection changes, trigger the 'updateChart' function
+    )
+
+    // Function that is triggered when brushing is performed
+    function updateChart(event) {
+        const extent = event.selection;
+        FRAME2.classed("selected", function(d){ return isBrushed(extent, //X_SCALE2(d.Sepal_Width), Y_SCALE2(d.Petal_Width))})
+    }                                                                    // idk why this is wrongggggg
+
+  // A function that return TRUE or FALSE according if a dot is in the selection or not
+  function isBrushed(brush_coords, cx, cy) {
+       var x0 = brush_coords[0][0],
+           x1 = brush_coords[1][0],
+           y0 = brush_coords[0][1],
+           y1 = brush_coords[1][1];
+      return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1;    // This return TRUE or FALSE depending on if the points is in the selected area
+  }
+
+
+})};
 
 build_scatter_2()
+
 
 
 
