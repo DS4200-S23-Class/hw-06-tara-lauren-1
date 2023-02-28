@@ -27,7 +27,7 @@ The purpose of this assignment is to practice creating a coordinated, multiview 
    - In the middle column, use D3 to create a Petal_Width vs Sepal_Width scatterplot. Color points as you did for the first scatterplot. Your chart does not need axis titles, but do add a header to title the chart. *
    - In the right column, create a bar chart that shows count of each iris species in the dataset. There are 50 of each type, and you may hard code the data for this plot. Color bars to match the coloring of points in the scatterplots. Your chart does not need axis titles, but do add a header to title the chart. *
    - Finally, add brushing and linking. 
-      - If the user brushes over points in the second scatter plot, corresponding points in the first scatter plot should be highlighted with increased opacity and an orange border and corresponding bars should be highlighted with an orange border in the bar chart. 
+      - If the user brushes over points in the second scatter plot, corresponding points in the first scatter plot should be highlighted with increased opacity and an orange border and corresponding bars should be highlighted with an orange border in the bar chart. *
    - Add a centered header to the bottom of your page. The header should say "Acknowledgements" in font smaller than the font used for your first header. Under this header, add a div. Inside of this div add a bulleted list of the resources you used to complete this assignment.*  
 
 ## Python Simple Server
