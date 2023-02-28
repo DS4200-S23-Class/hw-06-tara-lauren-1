@@ -1,10 +1,10 @@
-const FRAME_HEIGHT = 400;
-const FRAME_WIDTH = 600; 
+const FRAME_HEIGHT = 300;
+const FRAME_WIDTH = 450; 
 const MARGINS = {left: 50, right: 50, top: 50, bottom: 50};
 const VIS_HEIGHT = FRAME_HEIGHT - MARGINS.top - MARGINS.bottom;
 const VIS_WIDTH = FRAME_WIDTH - MARGINS.left - MARGINS.right; 
 
-
+ 
 // Left scatter plot
 const FRAME1 = d3.select("#vis1")
                   .append("svg")

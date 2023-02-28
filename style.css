@@ -6,23 +6,26 @@ body {
   text-align: center; 
 }
 
-.column {
-	flex: 33.33%;
-	height: 600px;
-	padding: 10px;
-	margin: 5px;
-	text-align: center;
-	border: 1px solid black;
+* {
+	box-sizing: border-box;
 }
 
-.row {
-	display: flex;
+.left, .right, .center {
+  float: left;
+  width: 33%;
+  color: black;
+  padding: 10px;
+  height: 500px;
+  text-align: center;
+  border: 1px solid black;
 }
+
+.container:after {
+ 	clear: both;
+}
+
 
 .bar {
 	fill: green;
 }
 
-/*.point {
-  fill: black;
-}*/
