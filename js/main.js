@@ -193,8 +193,9 @@ d3.csv("data/iris.csv").then((data) => {
                 .attr("width", X_SCALE3.bandwidth())
                 .attr("y", (d) => {return Y_SCALE3(50) + MARGINS.top})
                 .attr("height", (d) => { return VIS_HEIGHT - Y_SCALE3(50)})
-                .attr("class", "bar")
                 .attr("fill", (d) => { return color(d.Species);})
+                .attr("opacity", 0.5)
+                .attr("class", "bar");
 })};
 
 

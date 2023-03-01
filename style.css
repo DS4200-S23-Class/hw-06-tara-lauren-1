@@ -24,6 +24,9 @@ body {
  	clear: both;
 }
 
+rect {
+  fill-opacity: 0.5;
+}
 
 .selected {
   opacity: 1;
